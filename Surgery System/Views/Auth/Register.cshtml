@@ -1,0 +1,63 @@
+﻿@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+<link href="~/css/register.css" rel="stylesheet" />
+
+<div class="register-wrapper">
+    <div class="register-box">
+
+        <!-- Top medical section with image and main title -->
+        <div class="top-medical-section text-center">
+            <img src="/images/b1.png" alt="Medical Care" />
+            <h2>Advanced Surgical Care Platform</h2>
+        </div>
+
+        <form asp-action="Register" method="post" novalidate>
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email Address</label>
+                <input asp-for="Email" class="input-field" placeholder="Enter your email" autocomplete="email" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="input-field" placeholder="Enter password" autocomplete="new-password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="input-field" placeholder="Confirm password" autocomplete="new-password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+
+            <button type="submit" class="btn main-btn w-100 mb-4 register-btn">
+                Register Now
+            </button>
+
+            <div class="text-center mb-3">
+                <a asp-action="Login" class="login-link">Already have an account? Login</a>
+            </div>
+        </form>
+
+        <!-- 🔹 Social Register Section -->
+        <div class="text-center mt-4">
+            <p class="mb-3">Or register using:</p>
+            <a asp-action="ExternalLogin" asp-route-provider="Google" class="btn btn-danger w-100 mb-2">
+                <i class="bi bi-google"></i> Register with Google
+            </a>
+            <a asp-action="ExternalLogin" asp-route-provider="Facebook" class="btn btn-primary w-100">
+                <i class="bi bi-facebook"></i> Register with Facebook
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Html.RenderPartialAsync("_ValidationScriptsPartial")
+    <script src="~/js/fnma.js"></script>
+}

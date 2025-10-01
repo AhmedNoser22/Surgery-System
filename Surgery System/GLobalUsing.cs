@@ -1,0 +1,15 @@
+﻿global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Surgery_System.Models;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.AspNetCore.Identity;
+global using Surgery_System.Data;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Surgery_System.ViewModels;
+global using Surgery_System.Services;
+global using AutoMapper;
+global using Surgery_System.Mapping;
+global using Surgery_System.Setting;
+global using Surgery_System.Helpers;

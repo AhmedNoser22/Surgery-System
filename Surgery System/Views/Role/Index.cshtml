@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RoleVM>
+
+@{
+    ViewData["Title"] = "Roles Management";
+}
+<link href="~/css/indexrole.css" rel="stylesheet" />
+
+<h1>Roles Management</h1>
+
+<div class="page-actions">
+    <a asp-action="Create" class="btn btn-create">+ Create New Role</a>
+    <button id="scrollToTableBtn" type="button" class="btn btn-scroll">↓ View Roles Table</button>
+</div>
+
+<div id="rolesTable" class="table-container">
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                    <th style="text-align:center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td style="text-align:center;">
+                            <a asp-action="UsersInRole" asp-route-id="@item.Id" class="btn-manage">Management</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("rolesTable").scrollIntoView({ behavior: "smooth" });
+    });
+</script>
+
+

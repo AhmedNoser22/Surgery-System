@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Surgery System</title>
+
+    <!-- Bootstrap Icons -->
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- Custom Styles -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Auth Buttons Bar -->
+    <div class="auth-bar">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form method="post" asp-controller="Auth" asp-action="Logout" class="mb-0">
+                <button type="submit" class="btn btn-outline-danger btn-sm auth-btn">Logout</button>
+            </form>
+        }
+        else
+        {
+            <a Asp-action="login" asp-controller="auth" class="btn btn-primary btn-sm auth-btn">Login</a>
+            <a Asp-action="register" asp-controller="auth" class="btn btn-outline-primary btn-sm auth-btn ms-2">Register</a>
+        }
+    </div>
+
+    <!-- Hero Section with Navigation -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Precision Surgery Hub</h1>
+            <nav class="nav justify-content-center">
+                @if (User.IsInRole("Doctor"))
+                {
+                    <a class="nav-link highlight-device" asp-controller="Surgery" asp-action="Index">Surgeries</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="nav-link" asp-controller="User" asp-action="Index">Manage Users</a>
+                    <a class="nav-link" asp-controller="Role" asp-action="Index">Roles</a>
+
+                }
+                
+            </nav>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        @RenderBody()
+
+        <div class="placeholder-content">
+            <h2>Welcome to the Medical System</h2>
+            <p>Explore our advanced medical services and choose your desired operation or department from the menu above.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 - Precision Surgery Hub | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.google.com/maps" target="_blank"><i class="bi bi-geo-alt-fill"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

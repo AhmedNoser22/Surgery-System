@@ -1,0 +1,36 @@
+﻿@model Surgery
+@{
+    ViewData["Title"] = Model.Name;
+}
+<link href="~/css/details.css" rel="stylesheet" />
+
+<div class="container-details">
+    <div class="image-section">
+        <img src="@Url.Content($"~/{FileSetting.ImagePath}/{Model.ImageUrl}")"
+             alt="@Model.Name" />
+    </div>
+
+    <div class="info-section">
+        <h1>@Model.Name</h1>
+        <div class="category-label">@Model.Category?.Name</div>
+        <p class="description">@Model.Description</p>
+
+        <h3 class="devices-title">Medical Devices Used</h3>
+        <div class="devices-list">
+            @foreach (var device in Model.SurgeryDevices)
+            {
+                <div class="device-item">
+                    @device.Device.Name
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let target = document.querySelector('.container-details');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>

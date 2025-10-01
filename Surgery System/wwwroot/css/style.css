@@ -1,0 +1,288 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.hero {
+    background: url('/images/b1.png') no-repeat center center/cover;
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    color: white;
+}
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero-content nav {
+        margin-top: 15px;
+    }
+
+    .hero-content .nav-link {
+        color: white !important;
+        font-weight: 500;
+        margin: 0 14px;
+        padding: 6px 14px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+        .hero-content .nav-link:hover {
+            background: rgba(255, 204, 0, 0.15);
+            color: #ffcc00 !important;
+            transform: translateY(-2px);
+        }
+
+/* زر مميز بلون متدرج */
+.highlight-device {
+    background: linear-gradient(90deg, #ffcc00, #ff8800);
+    color: #222 !important;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+    .highlight-device:hover {
+        background: linear-gradient(90deg, #ff8800, #ffcc00);
+        color: white !important;
+    }
+
+.main-section {
+    background: #f5f8fa;
+    padding: 50px 0;
+    flex: 1;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+    .card-box img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .card-box h4 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #003f5c;
+        margin-bottom: 10px;
+    }
+
+    .card-box p {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .card-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+.main-content {
+    padding: 20px;
+    min-height: 70vh;
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.placeholder-content {
+    text-align: center;
+    margin-top: 80px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+    .placeholder-content i,
+    .placeholder-content h2 {
+        background: linear-gradient(90deg, #ffcc00, #ff8800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .placeholder-content i {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    .placeholder-content h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .placeholder-content p {
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    background: #003f5c;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.9rem;
+}
+
+.social-icons a {
+    font-size: 1.4rem;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+    .social-icons a[href*="facebook"] {
+        color: #1877f2;
+    }
+
+        .social-icons a[href*="facebook"]:hover {
+            color: #0d5eca;
+            transform: scale(1.15);
+        }
+
+    .social-icons a[href*="google"] {
+        color: #ea4335;
+    }
+
+        .social-icons a[href*="google"]:hover {
+            color: #c33d2e;
+            transform: scale(1.15);
+        }
+
+    .social-icons a[href*="twitter"] {
+        color: #1da1f2;
+    }
+
+        .social-icons a[href*="twitter"]:hover {
+            color: #0d8ddb;
+            transform: scale(1.15);
+        }
+
+    .social-icons a[href*="linkedin"] {
+        color: #0a66c2;
+    }
+
+        .social-icons a[href*="linkedin"]:hover {
+            color: #084b8a;
+            transform: scale(1.15);
+        }
+
+/* أزرار <a> كزر مربع وواضح */
+a.btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 0.7rem 1.4rem !important;
+    border-radius: 6px !important;
+    background-color: #3EC6A0 !important; 
+    color: #fff !important;
+    font-weight: 600;
+    text-decoration: none !important; /* يشيل الخط */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+    a.btn:hover, a.btn:focus {
+        background-color: #2A8A74 !important;
+        transform: translateY(-2px);
+        text-decoration: none !important;
+    }
+
+    a.btn i {
+        font-size: 1.1em;
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+/* =============== START: Auth Bar Styles =============== */
+
+.auth-bar {
+    background-color: #004080;
+    color: white;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    font-weight: 600;
+}
+
+.auth-greeting {
+    white-space: nowrap;
+}
+
+.auth-btn {
+    padding: 5px 18px !important;
+    font-size: 0.9rem !important;
+    border-radius: 20px !important;
+    border: 2px solid white !important;
+    background-color: transparent !important;
+    color: white !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .auth-btn:hover,
+    .auth-btn:focus {
+        background-color: white !important;
+        color: #004080 !important;
+        outline: none;
+        text-decoration: none !important;
+    }
+
+/* =============== END: Auth Bar Styles =============== */

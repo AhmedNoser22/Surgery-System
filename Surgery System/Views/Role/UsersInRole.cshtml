@@ -1,0 +1,40 @@
+﻿@model List<UserManagerVM>
+@{
+    ViewData["Title"] = "Role Management";
+}
+<link href="~/css/useinrole.css" rel="stylesheet" />
+
+<div class="container mt-5 pt-5">
+    <form method="post" asp-action="UsersInRole">
+        <div class="card role-card">
+            <div class="role-card-header">
+                Role Management
+            </div>
+            <div class="card-body">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <div class="form-check" id="user-@i">
+                        <input class="form-check-input" type="checkbox" asp-for="@Model[i].IsSelected" />
+                        <label class="form-check-label" asp-for="@Model[i].Email">@Model[i].Email</label>
+                        <input type="hidden" asp-for="@Model[i].Id" />
+                        <input type="hidden" asp-for="@Model[i].Email" />
+                    </div>
+                }
+
+                <div asp-validation-summary="All" class="text-danger mt-2"></div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-custom">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let firstUser = document.querySelector(".form-check");
+        if (firstUser) {
+            firstUser.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    });
+</script>

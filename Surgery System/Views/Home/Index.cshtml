@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Surgery>
+@{
+    ViewData["Title"] = "Surgery List";
+}
+<link href="~/css/indexhome.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="surgery-grid">
+        @foreach (var surgery in Model)
+        {
+            <a asp-controller="Surgery" asp-action="Details" asp-route-id="@surgery.Id" class="surgery-card" title="@surgery.Name">
+                <img src="@($"{FileSetting.ImagePath}/{surgery.ImageUrl}")" alt="@surgery.Category.Name" loading="lazy" />
+                <div class="surgery-card-body">
+                    <span class="category-badge">@surgery.Category.Name</span>
+                    <h5>@surgery.Name</h5>
+                </div>
+                <div class="card-footer">
+                    <h5>Discover Procedure Insights</h5>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const grid = document.querySelector('.surgery-grid');
+        if (grid) {
+            grid.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>
